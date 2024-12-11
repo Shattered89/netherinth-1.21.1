@@ -2,6 +2,7 @@ package net.shattered.rinth;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.shattered.rinth.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,5 +12,6 @@ public class Netherinth implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModItems.registerModItems();
 	}
 }
