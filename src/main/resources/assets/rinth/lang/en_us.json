@@ -1,5 +1,8 @@
 {
   "item.rinth.pink_garnet": "Pink Garnet",
   "item.rinth.pink_garnet.desc": "A pink gemstone that can be used to craft tools and armor.",
-  "item.rinth.raw_pink_garnet": "Raw Pink Garnet"
+  "item.rinth.raw_pink_garnet": "Raw Pink Garnet",
+
+  "block.rinth.pink_garnet_block": "Block of Pink Garnet",
+  "block.rinth.raw_pink_garnet_block": "Block of Raw Pink Garnet"
 }
