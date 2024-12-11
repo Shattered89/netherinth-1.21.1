@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "rinth:pink_garnet_block",
+    "rinth:raw_pink_garnet_block",
+    "rinth:pink_garnet_ore",
+    "rinth:pink_garnet_deepslate_ore"
+  ]
+}
