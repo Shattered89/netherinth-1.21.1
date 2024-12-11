@@ -4,5 +4,8 @@
   "item.rinth.raw_pink_garnet": "Raw Pink Garnet",
 
   "block.rinth.pink_garnet_block": "Block of Pink Garnet",
-  "block.rinth.raw_pink_garnet_block": "Block of Raw Pink Garnet"
+  "block.rinth.raw_pink_garnet_block": "Block of Raw Pink Garnet",
+
+  "itemgroup.rinth.pink_garnet_items": "Pink Garnet Items",
+  "itemgroup.rinth.pink_garnet_blocks": "Pink Garnet Blocks"
 }
