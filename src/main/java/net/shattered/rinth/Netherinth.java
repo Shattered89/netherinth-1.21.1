@@ -2,6 +2,7 @@ package net.shattered.rinth;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.shattered.rinth.block.ModBlocks;
 import net.shattered.rinth.item.ModItemGroups;
 import net.shattered.rinth.item.ModItems;
@@ -18,5 +19,7 @@ public class Netherinth implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+
+		FuelRegistry.INSTANCE.add(ModItems.STARLIGHT_ASHES, 2400);
 	}
 }

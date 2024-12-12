@@ -21,6 +21,9 @@ public class ModItemGroups {
 
 
                         entries.add(ModItems.CHISEL);
+                        entries.add(ModItems.LAVA_NUGGET);
+
+                        entries.add(ModItems.STARLIGHT_ASHES);
 
                     }).build());
 

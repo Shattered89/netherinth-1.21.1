@@ -5,6 +5,9 @@
 
   "item.rinth.chisel": "Chisel",
 
+  "item.rinth.lava_nugget": "Lava Nuggets",
+  "item.rinth.starlight_ashes": "Starlight Ashes",
+
   "block.rinth.pink_garnet_block": "Block of Pink Garnet",
   "block.rinth.raw_pink_garnet_block": "Block of Raw Pink Garnet",
 
@@ -12,5 +15,7 @@
   "block.rinth.pink_garnet_deepslate_ore": "Pink Garnet Deepslate Ore",
 
   "itemgroup.rinth.pink_garnet_items": "Pink Garnet Items",
-  "itemgroup.rinth.pink_garnet_blocks": "Pink Garnet Blocks"
+  "itemgroup.rinth.pink_garnet_blocks": "Pink Garnet Blocks",
+
+  "itemgroup.rinth.magic_block": "Magic Block"
 }

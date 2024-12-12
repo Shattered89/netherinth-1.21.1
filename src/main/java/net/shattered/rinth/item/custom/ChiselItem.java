@@ -1,4 +1,4 @@
-package net.shattered.rinth.custom;
+package net.shattered.rinth.item.custom;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
