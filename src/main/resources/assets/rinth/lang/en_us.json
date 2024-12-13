@@ -17,5 +17,19 @@
   "itemgroup.rinth.pink_garnet_items": "Pink Garnet Items",
   "itemgroup.rinth.pink_garnet_blocks": "Pink Garnet Blocks",
 
-  "itemgroup.rinth.magic_block": "Magic Block"
+  "block.rinth.magic_block": "Magic Block",
+
+  "block.rinth.pink_garnet_door": "Pink Garnet Door",
+    "block.rinth.pink_garnet_trapdoor": "Pink Garnet Trapdoor",
+
+    "block.rinth.pink_garnet_fence": "Pink Garnet Fence",
+    "block.rinth.pink_garnet_fence_gate": "Pink Garnet Fence Gate",
+
+    "block.rinth.pink_garnet_stairs": "Pink Garnet Stairs",
+    "block.rinth.pink_garnet_slab": "Pink Garnet Slab",
+
+    "block.rinth.pink_garnet_button": "Pink Garnet Button",
+    "block.rinth.pink_garnet_pressure_plate": "Pink Garnet Pressure Plate",
+
+    "block.rinth.pink_garnet_wall": "Pink Garnet Wall"
 }

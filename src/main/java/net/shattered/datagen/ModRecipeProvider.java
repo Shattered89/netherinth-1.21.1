@@ -44,5 +44,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.RAW_PINK_GARNET_BLOCK), conditionsFromItem(ModBlocks.RAW_PINK_GARNET_BLOCK))
                 .offerTo(recipeExporter, Identifier.of("raw_pink_garnet_from_block"));
 
+
     }
 }
