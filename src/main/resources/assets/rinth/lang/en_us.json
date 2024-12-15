@@ -17,6 +17,14 @@
   "itemgroup.rinth.pink_garnet_items": "Pink Garnet Items",
   "itemgroup.rinth.pink_garnet_blocks": "Pink Garnet Blocks",
 
+  "item.rinth.pink_garnet_sword": "Pink Garnet Sword",
+    "item.rinth.pink_garnet_pickaxe": "Pink Garnet Pickaxe",
+    "item.rinth.pink_garnet_axe": "Pink Garnet Axe",
+    "item.rinth.pink_garnet_shovel": "Pink Garnet Shovel",
+    "item.rinth.pink_garnet_hoe": "Pink Garnet Hoe",
+  "item.rinth.hellfire_sword": "Hellfire Sword",
+
+
   "block.rinth.magic_block": "Magic Block",
 
   "block.rinth.pink_garnet_door": "Pink Garnet Door",
@@ -31,5 +39,7 @@
     "block.rinth.pink_garnet_button": "Pink Garnet Button",
     "block.rinth.pink_garnet_pressure_plate": "Pink Garnet Pressure Plate",
 
-    "block.rinth.pink_garnet_wall": "Pink Garnet Wall"
+    "block.rinth.pink_garnet_wall": "Pink Garnet Wall",
+
+    "block.rinth.pink_garnet_lamp": "Pink Garnet Lamp"
 }

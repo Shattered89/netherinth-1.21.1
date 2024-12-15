@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
@@ -43,6 +45,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(ModBlocks.RAW_PINK_GARNET_BLOCK)
                 .criterion(hasItem(ModBlocks.RAW_PINK_GARNET_BLOCK), conditionsFromItem(ModBlocks.RAW_PINK_GARNET_BLOCK))
                 .offerTo(recipeExporter, Identifier.of("raw_pink_garnet_from_block"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HELLFIRE_SWORD)
+                .pattern(" S ")
+                .pattern(" S ")
+                .pattern(" R ")
+                .input('S', ModItems.STARLIGHT_ASHES)
+                .input('R', Items.STICK)
+                .criterion(hasItem(ModItems.STARLIGHT_ASHES), conditionsFromItem(ModItems.STARLIGHT_ASHES))
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(recipeExporter);
 
 
     }

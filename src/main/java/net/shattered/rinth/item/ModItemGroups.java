@@ -25,6 +25,14 @@ public class ModItemGroups {
 
                         entries.add(ModItems.STARLIGHT_ASHES);
 
+                        entries.add(ModItems.PINK_GARNET_SWORD);
+                        entries.add(ModItems.PINK_GARNET_PICKAXE);
+                        entries.add(ModItems.PINK_GARNET_SHOVEL);
+                        entries.add(ModItems.PINK_GARNET_AXE);
+                        entries.add(ModItems.PINK_GARNET_HOE);
+                        entries.add(ModItems.HELLFIRE_SWORD);
+
+
                     }).build());
 
     public static final ItemGroup PINK_GARNET_BLOCKS_GROUP = Registry.register(Registries.ITEM_GROUP,
@@ -50,6 +58,8 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.PINK_GARNET_DOOR);
                         entries.add(ModBlocks.PINK_GARNET_TRAPDOOR);
+
+                        entries.add(ModBlocks.PINK_GARNET_LAMP);
                     }).build());
 
 

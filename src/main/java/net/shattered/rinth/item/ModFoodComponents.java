@@ -1,4 +1,4 @@
-package net.shattered.rinth.item.custom;
+package net.shattered.rinth.item;
 
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffectInstance;
