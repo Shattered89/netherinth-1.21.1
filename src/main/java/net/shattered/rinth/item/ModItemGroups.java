@@ -30,7 +30,12 @@ public class ModItemGroups {
                         entries.add(ModItems.PINK_GARNET_SHOVEL);
                         entries.add(ModItems.PINK_GARNET_AXE);
                         entries.add(ModItems.PINK_GARNET_HOE);
+
                         entries.add(ModItems.HELLFIRE_SWORD);
+                        entries.add(ModItems.HELLFIRE_AXE);
+
+                        entries.add(ModItems.QUEEN_AXE);
+                        entries.add(ModItems.QUEEN_SWORD);
 
 
                     }).build());

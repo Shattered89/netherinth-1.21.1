@@ -36,5 +36,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PINK_GARNET_HOE);
         getOrCreateTagBuilder(ItemTags.SWORDS)
                 .add(ModItems.HELLFIRE_SWORD);
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(ModItems.HELLFIRE_AXE);
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(ModItems.QUEEN_SWORD);
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(ModItems.QUEEN_AXE);
+
     }
 }

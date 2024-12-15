@@ -33,9 +33,18 @@ public class ModItems {
     public static final Item PINK_GARNET_HOE = registerItem("pink_garnet_hoe",
             new HoeItem(ModToolMaterials.PINK_GARNET, new Item.Settings()
                     .attributeModifiers(HoeItem.createAttributeModifiers(ModToolMaterials.PINK_GARNET, 0, -3F))));
+
     public static final Item HELLFIRE_SWORD = registerItem("hellfire_sword",
             new SwordItem(ModToolMaterials.HELLFIRE, new Item.Settings()
                     .attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.HELLFIRE, 3, -2.4F))));
+    public static final Item HELLFIRE_AXE = registerItem("hellfire_axe", new AxeItem(ModToolMaterials.HELLFIRE, new Item.Settings()
+            .attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.HELLFIRE, 6, -3.2F))));
+
+    public static final Item QUEEN_SWORD = registerItem("queen_sword",
+            new SwordItem(ModToolMaterials.HELLFIRE, new Item.Settings()
+                    .attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.HELLFIRE, 3, -2.4F))));
+    public static final Item QUEEN_AXE = registerItem("queen_axe", new AxeItem(ModToolMaterials.HELLFIRE, new Item.Settings()
+            .attributeModifiers(AxeItem.createAttributeModifiers(ModToolMaterials.HELLFIRE, 6, -3.2F))));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(Netherinth.MOD_ID, name), item);
