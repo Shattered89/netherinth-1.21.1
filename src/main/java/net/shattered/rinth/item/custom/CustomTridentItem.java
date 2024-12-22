@@ -32,11 +32,10 @@ import net.minecraft.util.math.Position;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.shattered.rinth.entity.CustomTridentEntity;
-import net.shattered.rinth.item.ModItems;
 
 import java.util.List;
 
-public class CustomTridentItem extends Item implements ProjectileItem {
+public class CustomTridentItem extends Item implements ProjectileItem, Dropped {
     public static final int MIN_DRAW_DURATION = 10;
     public static final float ATTACK_DAMAGE = 18.0F;
     public static final float THROW_SPEED = 2.5F;
@@ -165,6 +164,27 @@ public class CustomTridentItem extends Item implements ProjectileItem {
     @Override
     public int getEnchantability() {
         return 1;
+    }
+
+    @Override
+    public boolean onStopUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        if (user instanceof PlayerEntity player && player.dropItem(stack, false) != null) {
+            if (!world.isClient) {
+                CustomTridentEntity tridentEntity = CustomTridentEntity.createFromDrop(world, player, stack);
+                world.spawnEntity(tridentEntity);
+                world.playSoundFromEntity(
+                        null,
+                        tridentEntity,
+                        (SoundEvent) SoundEvents.ITEM_TRIDENT_THROW,
+                        SoundCategory.PLAYERS,
+                        1.0F,
+                        1.0F
+                );
+                stack.setCount(0);
+            }
+            return true;
+        }
+        return false;
     }
 
     @Override

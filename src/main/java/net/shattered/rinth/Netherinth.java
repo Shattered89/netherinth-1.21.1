@@ -21,7 +21,6 @@ public class Netherinth implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItemGroups.registerModItemGroups();
-
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 

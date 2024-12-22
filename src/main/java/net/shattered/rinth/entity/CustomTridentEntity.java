@@ -20,6 +20,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.shattered.rinth.item.ModItems;
+import net.shattered.rinth.item.custom.CustomTridentItem;
 import org.jetbrains.annotations.Nullable;
 
 public class CustomTridentEntity extends PersistentProjectileEntity {
@@ -131,7 +132,21 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
 
     @Override
     protected boolean tryPickup(PlayerEntity player) {
-        return super.tryPickup(player) || this.isNoClip() && this.isOwner(player) && player.getInventory().insertStack(this.asItemStack());
+        // Only allow pickup if the player is the owner
+        if (this.isOwner(player)) {
+            return player.getInventory().insertStack(this.asItemStack());
+        }
+        return false;
+    }
+
+    public static CustomTridentEntity createFromDrop(World world, PlayerEntity player, ItemStack stack) {
+        CustomTridentEntity tridentEntity = new CustomTridentEntity(world, player, stack);
+        tridentEntity.setVelocity(0, 0, 0); // No initial velocity when dropped
+        tridentEntity.setPosition(player.getX(), player.getY(), player.getZ());
+        tridentEntity.setOwner(player);
+        // Set pickup permission to only allow the owner
+        tridentEntity.pickupType = PickupPermission.CREATIVE_ONLY;
+        return tridentEntity;
     }
 
     @Override
