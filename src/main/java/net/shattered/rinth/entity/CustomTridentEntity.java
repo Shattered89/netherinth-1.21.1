@@ -26,6 +26,7 @@ import org.jetbrains.annotations.Nullable;
 public class CustomTridentEntity extends PersistentProjectileEntity {
     private static final TrackedData<Byte> LOYALTY = DataTracker.registerData(CustomTridentEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Boolean> ENCHANTED = DataTracker.registerData(CustomTridentEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    public static final TrackedData<Boolean> FROM_DROP = DataTracker.registerData(CustomTridentEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private boolean dealtDamage;
     public int returnTimer;
 
@@ -57,6 +58,7 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
     protected void initDataTracker(DataTracker.Builder builder) {
         super.initDataTracker(builder);
         builder.add(LOYALTY, (byte)0);
+        builder.add(FROM_DROP, false);
         builder.add(ENCHANTED, false);
     }
 
@@ -94,6 +96,7 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
         }
 
         Entity entity = this.getOwner();
+        boolean fromDrop = this.dataTracker.get(FROM_DROP);
         int i = this.dataTracker.get(LOYALTY);
         if (i > 0 && (this.dealtDamage || this.isNoClip()) && entity != null) {
             if (!this.isOwnerAlive()) {
@@ -141,11 +144,29 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
 
     public static CustomTridentEntity createFromDrop(World world, PlayerEntity player, ItemStack stack) {
         CustomTridentEntity tridentEntity = new CustomTridentEntity(world, player, stack);
-        tridentEntity.setVelocity(0, 0, 0); // No initial velocity when dropped
-        tridentEntity.setPosition(player.getX(), player.getY(), player.getZ());
+
+        // Calculate drop velocity based on player's look direction
+        float dropSpeed = 0.3f;  // Adjust this value to change how far it drops
+        Vec3d lookDir = player.getRotationVector();
+
+        // Add a slight upward motion
+        tridentEntity.setVelocity(
+                lookDir.x * dropSpeed,
+                0.2, // Upward velocity
+                lookDir.z * dropSpeed
+        );
+
+        // Position slightly in front of the player
+        double forward = 0.5; // How far forward to spawn
+        tridentEntity.setPosition(
+                player.getX() + lookDir.x * forward,
+                player.getY() + 1.2, // Spawn at chest height
+                player.getZ() + lookDir.z * forward
+        );
+
         tridentEntity.setOwner(player);
-        // Set pickup permission to only allow the owner
         tridentEntity.pickupType = PickupPermission.CREATIVE_ONLY;
+        tridentEntity.dataTracker.set(FROM_DROP, true);
         return tridentEntity;
     }
 
@@ -218,6 +239,7 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         this.dealtDamage = nbt.getBoolean("DealtDamage");
+        this.dataTracker.set(FROM_DROP, nbt.getBoolean("FromDrop"));
         ItemStack stack = this.getItemStack();
         if (stack != null) {
             this.dataTracker.set(LOYALTY, this.getLoyalty(stack));
@@ -228,5 +250,6 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("DealtDamage", this.dealtDamage);
+        nbt.putBoolean("FromDrop", this.dataTracker.get(FROM_DROP));
     }
 }
