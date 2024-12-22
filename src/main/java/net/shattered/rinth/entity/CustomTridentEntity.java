@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
@@ -62,6 +63,33 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
     public void tick() {
         if (this.inGroundTime > 4) {
             this.dealtDamage = true;
+        }
+
+        // Add particle effects while flying
+        if (!this.inGround) {
+            if (this.getWorld().isClient) {
+                // Spawn smoke particles
+                for (int i = 0; i < 2; i++) {
+                    this.getWorld().addParticle(
+                            ParticleTypes.LARGE_SMOKE,
+                            this.getX() + (this.random.nextDouble() - 0.5) * 0.2,
+                            this.getY() + (this.random.nextDouble() - 0.5) * 0.2,
+                            this.getZ() + (this.random.nextDouble() - 0.5) * 0.2,
+                            0, 0, 0
+                    );
+                }
+
+                // Spawn dripping lava particles
+                if (this.random.nextFloat() < 0.3f) { // 30% chance each tick
+                    this.getWorld().addParticle(
+                            ParticleTypes.DRIPPING_LAVA,
+                            this.getX(),
+                            this.getY(),
+                            this.getZ(),
+                            0, 0, 0
+                    );
+                }
+            }
         }
 
         Entity entity = this.getOwner();
@@ -145,6 +173,9 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
 
         this.dealtDamage = true;
         if (entity.damage(damageSource, damage)) {
+            // Set entity on fire for 100 ticks (5 seconds)
+            entity.setOnFireFor(100);
+
             if (entity.getType() == EntityType.ENDERMAN) {
                 return;
             }
