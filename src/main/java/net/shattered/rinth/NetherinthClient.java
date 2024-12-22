@@ -7,6 +7,8 @@ import net.minecraft.client.render.RenderLayer;
 import net.shattered.rinth.block.ModBlocks;
 import net.shattered.rinth.entity.ModEntityTypes;
 import net.shattered.rinth.entity.client.CustomTridentRenderer;
+import net.shattered.rinth.event.KeyBinds;
+import net.shattered.rinth.event.TridentRecallManager;
 
 public class NetherinthClient implements ClientModInitializer {
     @Override
@@ -14,5 +16,6 @@ public class NetherinthClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntityTypes.CUSTOM_TRIDENT, CustomTridentRenderer::new);
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PINK_GARNET_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PINK_GARNET_TRAPDOOR, RenderLayer.getCutout());
+        KeyBinds.registerKeyBinds();
     }
 }

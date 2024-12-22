@@ -20,6 +20,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.shattered.rinth.item.ModItems;
+import net.shattered.rinth.storage.TridentStorage;
 import org.jetbrains.annotations.Nullable;
 
 public class CustomTridentEntity extends PersistentProjectileEntity {
@@ -121,21 +122,21 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
                 this.lastRenderY = this.getY();
             }
 
-            // Use the same velocity calculation as loyalty
             double pullStrength = 3.0;
             this.setVelocity(this.getVelocity().multiply(0.8).add(vec3d.normalize().multiply(pullStrength)));
 
-            // Play return sound effect
             if (this.returnTimer == 0) {
                 this.playSound(SoundEvents.ITEM_TRIDENT_RETURN, 10.0F, 1.0F);
             }
             this.returnTimer++;
 
-            // Check if close enough to pick up
             if (this.distanceTo(entity) < 2.0) {
                 if (!this.getWorld().isClient) {
                     ItemStack stack = this.getItemStack();
                     if (stack != null && ((PlayerEntity)entity).getInventory().insertStack(stack)) {
+                        if (entity instanceof PlayerEntity player) {
+                            TridentStorage.removeTrident(player);
+                        }
                         this.discard();
                     }
                 }
@@ -179,8 +180,8 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
 
     @Override
     protected boolean tryPickup(PlayerEntity player) {
-        // Only allow pickup if the player is the owner
         if (this.isOwner(player)) {
+            TridentStorage.removeTrident(player);
             return player.getInventory().insertStack(this.asItemStack());
         }
         return false;
@@ -189,28 +190,29 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
     public static CustomTridentEntity createFromDrop(World world, PlayerEntity player, ItemStack stack) {
         CustomTridentEntity tridentEntity = new CustomTridentEntity(world, player, stack);
 
-        // Calculate drop velocity based on player's look direction
-        float dropSpeed = 0.3f;  // Adjust this value to change how far it drops
+        float dropSpeed = 0.3f;
         Vec3d lookDir = player.getRotationVector();
 
-        // Add a slight upward motion
         tridentEntity.setVelocity(
                 lookDir.x * dropSpeed,
-                0.2, // Upward velocity
+                0.2,
                 lookDir.z * dropSpeed
         );
 
-        // Position slightly in front of the player
-        double forward = 0.5; // How far forward to spawn
+        double forward = 0.5;
         tridentEntity.setPosition(
                 player.getX() + lookDir.x * forward,
-                player.getY() + 1.2, // Spawn at chest height
+                player.getY() + 1.2,
                 player.getZ() + lookDir.z * forward
         );
 
         tridentEntity.setOwner(player);
         tridentEntity.pickupType = PickupPermission.CREATIVE_ONLY;
         tridentEntity.dataTracker.set(FROM_DROP, true);
+
+        // Store the dropped trident for recall functionality
+        TridentStorage.storeTrident(player, tridentEntity);
+
         return tridentEntity;
     }
 
@@ -253,7 +255,6 @@ public class CustomTridentEntity extends PersistentProjectileEntity {
 
         this.dealtDamage = true;
         if (entity.damage(damageSource, damage)) {
-            // Set entity on fire for 100 ticks (5 seconds)
             entity.setOnFireFor(100);
 
             if (entity.getType() == EntityType.ENDERMAN) {
