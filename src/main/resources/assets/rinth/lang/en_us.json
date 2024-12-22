@@ -16,6 +16,7 @@
 
   "itemgroup.rinth.pink_garnet_items": "Pink Garnet Items",
   "itemgroup.rinth.pink_garnet_blocks": "Pink Garnet Blocks",
+  "itemgroup.rinth.netherinth": "Netherinth",
 
   "item.rinth.pink_garnet_sword": "Pink Garnet Sword",
     "item.rinth.pink_garnet_pickaxe": "Pink Garnet Pickaxe",
@@ -27,7 +28,11 @@
     "item.rinth.hellfire_axe": "Hellfire Axe",
 
   "item.rinth.queen_sword": "Queen Sword",
-    "item.rinth.queen_axe": "Queen Axe",
+  "item.rinth.queen_axe": "Queen Axe",
+
+  "item.rinth.pink_garnet_hammer": "Pink Garnet Hammer",
+
+  "item.rinth.pitch_fork": "Pitchfork",
 
 
   "block.rinth.magic_block": "Magic Block",

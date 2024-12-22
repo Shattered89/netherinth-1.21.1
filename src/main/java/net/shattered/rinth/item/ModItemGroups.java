@@ -37,6 +37,8 @@ public class ModItemGroups {
                         entries.add(ModItems.QUEEN_AXE);
                         entries.add(ModItems.QUEEN_SWORD);
 
+                        entries.add(ModItems.PINK_GARNET_HAMMER);
+
 
                     }).build());
 
@@ -65,6 +67,16 @@ public class ModItemGroups {
                         entries.add(ModBlocks.PINK_GARNET_TRAPDOOR);
 
                         entries.add(ModBlocks.PINK_GARNET_LAMP);
+                    }).build());
+
+    public static final ItemGroup NETHERINTH_GROUP = Registry.register(Registries.ITEM_GROUP,
+            Identifier.of(Netherinth.MOD_ID, "netherinth"),
+            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.STARLIGHT_ASHES))
+                    .displayName(Text.translatable("itemgroup.rinth.netherinth"))
+                    .entries((displayContext, entries) -> {
+                        entries.add(ModItems.STARLIGHT_ASHES);
+                        entries.add(ModItems.LAVA_NUGGET);
+                        entries.add(ModItems.PITCHFORK);
                     }).build());
 
 

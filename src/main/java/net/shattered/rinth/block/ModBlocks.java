@@ -62,7 +62,6 @@ public class ModBlocks {
             new PinkGarnetLampBlock(AbstractBlock.Settings.create().strength(1f)
                     .requiresTool().luminance(state -> state.get(PinkGarnetLampBlock.CLICKED) ? 15 : 0)));
 
-
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(Netherinth.MOD_ID, name), block);
